@@ -20,11 +20,10 @@ interface NavItem {
 
 const menu: NavItem[] = [
   { label: "Dashboard", to: "/dashboard", Icon: LayoutDashboard },
-  { label: "Explorar", to: "/explore", Icon: Compass },
-  { label: "Mis análisis", to: "/library", Icon: Library },
   { label: "Herramientas", to: "/tools", Icon: Wrench },
   { label: "Ranking", to: "/ranking", Icon: Trophy },
   { label: "Logros", to: "/achievements", Icon: Award },
+  { label: "Academy Points", to: "/points", Icon: Compass },
   { label: "Notificaciones", to: "/notifications", Icon: Bell },
   { label: "Ajustes", to: "/settings", Icon: Settings },
 ];
