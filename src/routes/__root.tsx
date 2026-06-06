@@ -80,11 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "TikToLive — Dashboard" },
       { name: "description", content: "Plataforma de monetización para creadores de TikTok en Latam." },
       { name: "author", content: "TikToLive" },
-      { property: "og:title", content: "TikToLive" },
+      { property: "og:title", content: "TikToLive — Dashboard" },
       { property: "og:description", content: "Plataforma de monetización para creadores de TikTok en Latam." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@TikToLive" },
+      { name: "twitter:title", content: "TikToLive — Dashboard" },
+      { name: "twitter:description", content: "Plataforma de monetización para creadores de TikTok en Latam." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dc45dbfd-4650-4afd-960b-b4f4d449b58a/id-preview-da606870--bc29daf1-4d66-4bba-8e3a-121db7230a3d.lovable.app-1780778621685.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dc45dbfd-4650-4afd-960b-b4f4d449b58a/id-preview-da606870--bc29daf1-4d66-4bba-8e3a-121db7230a3d.lovable.app-1780778621685.png" },
     ],
     links: [
       {
