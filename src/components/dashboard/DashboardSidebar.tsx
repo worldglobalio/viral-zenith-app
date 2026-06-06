@@ -7,6 +7,13 @@ import {
   Award,
   Bell,
   Settings,
+  User,
+  Gift,
+  ShoppingBag,
+  GraduationCap,
+  Flag,
+  Calendar,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 import { recentTools } from "@/lib/mock-dashboard";
@@ -23,8 +30,15 @@ const menu: NavItem[] = [
   { label: "Ranking", to: "/ranking", Icon: Trophy },
   { label: "Logros", to: "/achievements", Icon: Award },
   { label: "Academy Points", to: "/points", Icon: Sparkles },
+  { label: "Academy", to: "/academy", Icon: GraduationCap },
+  { label: "Retos", to: "/challenges", Icon: Flag },
+  { label: "Calendario", to: "/calendar", Icon: Calendar },
+  { label: "Store", to: "/store", Icon: ShoppingBag },
+  { label: "Referidos", to: "/referrals", Icon: Gift },
   { label: "Notificaciones", to: "/notifications", Icon: Bell },
+  { label: "Perfil", to: "/profile", Icon: User },
   { label: "Ajustes", to: "/settings", Icon: Settings },
+  { label: "Admin", to: "/admin", Icon: ShieldCheck },
 ];
 
 export function DashboardSidebar() {
