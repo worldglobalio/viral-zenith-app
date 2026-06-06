@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as RankingRouteImport } from './routes/ranking'
+import { Route as PointsRouteImport } from './routes/points'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsViralScoreRouteImport } from './routes/tools.viral-score'
 
@@ -25,9 +28,24 @@ const RankingRoute = RankingRouteImport.update({
   path: '/ranking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PointsRoute = PointsRouteImport.update({
+  id: '/points',
+  path: '/points',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AchievementsRoute = AchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,14 +61,20 @@ const ToolsViralScoreRoute = ToolsViralScoreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/dashboard': typeof DashboardRoute
+  '/notifications': typeof NotificationsRoute
+  '/points': typeof PointsRoute
   '/ranking': typeof RankingRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/dashboard': typeof DashboardRoute
+  '/notifications': typeof NotificationsRoute
+  '/points': typeof PointsRoute
   '/ranking': typeof RankingRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/viral-score': typeof ToolsViralScoreRoute
@@ -58,20 +82,42 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
   '/dashboard': typeof DashboardRoute
+  '/notifications': typeof NotificationsRoute
+  '/points': typeof PointsRoute
   '/ranking': typeof RankingRoute
   '/tools': typeof ToolsRouteWithChildren
   '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/ranking' | '/tools' | '/tools/viral-score'
+  fullPaths:
+    | '/'
+    | '/achievements'
+    | '/dashboard'
+    | '/notifications'
+    | '/points'
+    | '/ranking'
+    | '/tools'
+    | '/tools/viral-score'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/ranking' | '/tools' | '/tools/viral-score'
+  to:
+    | '/'
+    | '/achievements'
+    | '/dashboard'
+    | '/notifications'
+    | '/points'
+    | '/ranking'
+    | '/tools'
+    | '/tools/viral-score'
   id:
     | '__root__'
     | '/'
+    | '/achievements'
     | '/dashboard'
+    | '/notifications'
+    | '/points'
     | '/ranking'
     | '/tools'
     | '/tools/viral-score'
@@ -79,7 +125,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AchievementsRoute: typeof AchievementsRoute
   DashboardRoute: typeof DashboardRoute
+  NotificationsRoute: typeof NotificationsRoute
+  PointsRoute: typeof PointsRoute
   RankingRoute: typeof RankingRoute
   ToolsRoute: typeof ToolsRouteWithChildren
 }
@@ -100,11 +149,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RankingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/points': {
+      id: '/points'
+      path: '/points'
+      fullPath: '/points'
+      preLoaderRoute: typeof PointsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/achievements': {
+      id: '/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof AchievementsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -136,7 +206,10 @@ const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AchievementsRoute: AchievementsRoute,
   DashboardRoute: DashboardRoute,
+  NotificationsRoute: NotificationsRoute,
+  PointsRoute: PointsRoute,
   RankingRoute: RankingRoute,
   ToolsRoute: ToolsRouteWithChildren,
 }
