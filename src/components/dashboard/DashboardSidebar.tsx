@@ -1,8 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
-  Compass,
-  Library,
+  Sparkles,
   Wrench,
   Trophy,
   Award,
@@ -20,11 +19,10 @@ interface NavItem {
 
 const menu: NavItem[] = [
   { label: "Dashboard", to: "/dashboard", Icon: LayoutDashboard },
-  { label: "Explorar", to: "/explore", Icon: Compass },
-  { label: "Mis análisis", to: "/library", Icon: Library },
   { label: "Herramientas", to: "/tools", Icon: Wrench },
   { label: "Ranking", to: "/ranking", Icon: Trophy },
   { label: "Logros", to: "/achievements", Icon: Award },
+  { label: "Academy Points", to: "/points", Icon: Sparkles },
   { label: "Notificaciones", to: "/notifications", Icon: Bell },
   { label: "Ajustes", to: "/settings", Icon: Settings },
 ];
