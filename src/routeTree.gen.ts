@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsViralScoreRouteImport } from './routes/tools.viral-score'
 
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
@@ -28,35 +29,43 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsViralScoreRoute = ToolsViralScoreRouteImport.update({
+  id: '/viral-score',
+  path: '/viral-score',
+  getParentRoute: () => ToolsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
-  '/tools': typeof ToolsRoute
+  '/tools': typeof ToolsRouteWithChildren
+  '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
-  '/tools': typeof ToolsRoute
+  '/tools': typeof ToolsRouteWithChildren
+  '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
-  '/tools': typeof ToolsRoute
+  '/tools': typeof ToolsRouteWithChildren
+  '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/tools'
+  fullPaths: '/' | '/dashboard' | '/tools' | '/tools/viral-score'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/tools'
-  id: '__root__' | '/' | '/dashboard' | '/tools'
+  to: '/' | '/dashboard' | '/tools' | '/tools/viral-score'
+  id: '__root__' | '/' | '/dashboard' | '/tools' | '/tools/viral-score'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
-  ToolsRoute: typeof ToolsRoute
+  ToolsRoute: typeof ToolsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -82,13 +91,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/viral-score': {
+      id: '/tools/viral-score'
+      path: '/viral-score'
+      fullPath: '/tools/viral-score'
+      preLoaderRoute: typeof ToolsViralScoreRouteImport
+      parentRoute: typeof ToolsRoute
+    }
   }
 }
+
+interface ToolsRouteChildren {
+  ToolsViralScoreRoute: typeof ToolsViralScoreRoute
+}
+
+const ToolsRouteChildren: ToolsRouteChildren = {
+  ToolsViralScoreRoute: ToolsViralScoreRoute,
+}
+
+const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
-  ToolsRoute: ToolsRoute,
+  ToolsRoute: ToolsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
