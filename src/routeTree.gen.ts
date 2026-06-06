@@ -10,22 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as StoreRouteImport } from './routes/store'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ReferralsRouteImport } from './routes/referrals'
 import { Route as RankingRouteImport } from './routes/ranking'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PointsRouteImport } from './routes/points'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LandingRouteImport } from './routes/landing'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ChallengesRouteImport } from './routes/challenges'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AchievementsRouteImport } from './routes/achievements'
+import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsViralScoreRouteImport } from './routes/tools.viral-score'
+import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
 
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
   path: '/tools',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StoreRoute = StoreRouteImport.update({
+  id: '/store',
+  path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferralsRoute = ReferralsRouteImport.update({
+  id: '/referrals',
+  path: '/referrals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RankingRoute = RankingRouteImport.update({
   id: '/ranking',
   path: '/ranking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PointsRoute = PointsRouteImport.update({
@@ -38,14 +69,44 @@ const NotificationsRoute = NotificationsRouteImport.update({
   path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LandingRoute = LandingRouteImport.update({
+  id: '/landing',
+  path: '/landing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChallengesRoute = ChallengesRouteImport.update({
+  id: '/challenges',
+  path: '/challenges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AchievementsRoute = AchievementsRouteImport.update({
   id: '/achievements',
   path: '/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademyRoute = AcademyRouteImport.update({
+  id: '/academy',
+  path: '/academy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -58,78 +119,159 @@ const ToolsViralScoreRoute = ToolsViralScoreRouteImport.update({
   path: '/viral-score',
   getParentRoute: () => ToolsRoute,
 } as any)
+const ToolsSlugRoute = ToolsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ToolsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/achievements': typeof AchievementsRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendar': typeof CalendarRoute
+  '/challenges': typeof ChallengesRoute
   '/dashboard': typeof DashboardRoute
+  '/landing': typeof LandingRoute
   '/notifications': typeof NotificationsRoute
   '/points': typeof PointsRoute
+  '/profile': typeof ProfileRoute
   '/ranking': typeof RankingRoute
+  '/referrals': typeof ReferralsRoute
+  '/settings': typeof SettingsRoute
+  '/store': typeof StoreRoute
   '/tools': typeof ToolsRouteWithChildren
+  '/tools/$slug': typeof ToolsSlugRoute
   '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/achievements': typeof AchievementsRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendar': typeof CalendarRoute
+  '/challenges': typeof ChallengesRoute
   '/dashboard': typeof DashboardRoute
+  '/landing': typeof LandingRoute
   '/notifications': typeof NotificationsRoute
   '/points': typeof PointsRoute
+  '/profile': typeof ProfileRoute
   '/ranking': typeof RankingRoute
+  '/referrals': typeof ReferralsRoute
+  '/settings': typeof SettingsRoute
+  '/store': typeof StoreRoute
   '/tools': typeof ToolsRouteWithChildren
+  '/tools/$slug': typeof ToolsSlugRoute
   '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/achievements': typeof AchievementsRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
+  '/calendar': typeof CalendarRoute
+  '/challenges': typeof ChallengesRoute
   '/dashboard': typeof DashboardRoute
+  '/landing': typeof LandingRoute
   '/notifications': typeof NotificationsRoute
   '/points': typeof PointsRoute
+  '/profile': typeof ProfileRoute
   '/ranking': typeof RankingRoute
+  '/referrals': typeof ReferralsRoute
+  '/settings': typeof SettingsRoute
+  '/store': typeof StoreRoute
   '/tools': typeof ToolsRouteWithChildren
+  '/tools/$slug': typeof ToolsSlugRoute
   '/tools/viral-score': typeof ToolsViralScoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/academy'
     | '/achievements'
+    | '/admin'
+    | '/auth'
+    | '/calendar'
+    | '/challenges'
     | '/dashboard'
+    | '/landing'
     | '/notifications'
     | '/points'
+    | '/profile'
     | '/ranking'
+    | '/referrals'
+    | '/settings'
+    | '/store'
     | '/tools'
+    | '/tools/$slug'
     | '/tools/viral-score'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/academy'
     | '/achievements'
+    | '/admin'
+    | '/auth'
+    | '/calendar'
+    | '/challenges'
     | '/dashboard'
+    | '/landing'
     | '/notifications'
     | '/points'
+    | '/profile'
     | '/ranking'
+    | '/referrals'
+    | '/settings'
+    | '/store'
     | '/tools'
+    | '/tools/$slug'
     | '/tools/viral-score'
   id:
     | '__root__'
     | '/'
+    | '/academy'
     | '/achievements'
+    | '/admin'
+    | '/auth'
+    | '/calendar'
+    | '/challenges'
     | '/dashboard'
+    | '/landing'
     | '/notifications'
     | '/points'
+    | '/profile'
     | '/ranking'
+    | '/referrals'
+    | '/settings'
+    | '/store'
     | '/tools'
+    | '/tools/$slug'
     | '/tools/viral-score'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcademyRoute: typeof AcademyRoute
   AchievementsRoute: typeof AchievementsRoute
+  AdminRoute: typeof AdminRoute
+  AuthRoute: typeof AuthRoute
+  CalendarRoute: typeof CalendarRoute
+  ChallengesRoute: typeof ChallengesRoute
   DashboardRoute: typeof DashboardRoute
+  LandingRoute: typeof LandingRoute
   NotificationsRoute: typeof NotificationsRoute
   PointsRoute: typeof PointsRoute
+  ProfileRoute: typeof ProfileRoute
   RankingRoute: typeof RankingRoute
+  ReferralsRoute: typeof ReferralsRoute
+  SettingsRoute: typeof SettingsRoute
+  StoreRoute: typeof StoreRoute
   ToolsRoute: typeof ToolsRouteWithChildren
 }
 
@@ -142,11 +284,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/store': {
+      id: '/store'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referrals': {
+      id: '/referrals'
+      path: '/referrals'
+      fullPath: '/referrals'
+      preLoaderRoute: typeof ReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ranking': {
       id: '/ranking'
       path: '/ranking'
       fullPath: '/ranking'
       preLoaderRoute: typeof RankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/points': {
@@ -163,6 +333,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/landing': {
+      id: '/landing'
+      path: '/landing'
+      fullPath: '/landing'
+      preLoaderRoute: typeof LandingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -170,11 +347,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/challenges': {
+      id: '/challenges'
+      path: '/challenges'
+      fullPath: '/challenges'
+      preLoaderRoute: typeof ChallengesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/achievements': {
       id: '/achievements'
       path: '/achievements'
       fullPath: '/achievements'
       preLoaderRoute: typeof AchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academy': {
+      id: '/academy'
+      path: '/academy'
+      fullPath: '/academy'
+      preLoaderRoute: typeof AcademyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -191,14 +403,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsViralScoreRouteImport
       parentRoute: typeof ToolsRoute
     }
+    '/tools/$slug': {
+      id: '/tools/$slug'
+      path: '/$slug'
+      fullPath: '/tools/$slug'
+      preLoaderRoute: typeof ToolsSlugRouteImport
+      parentRoute: typeof ToolsRoute
+    }
   }
 }
 
 interface ToolsRouteChildren {
+  ToolsSlugRoute: typeof ToolsSlugRoute
   ToolsViralScoreRoute: typeof ToolsViralScoreRoute
 }
 
 const ToolsRouteChildren: ToolsRouteChildren = {
+  ToolsSlugRoute: ToolsSlugRoute,
   ToolsViralScoreRoute: ToolsViralScoreRoute,
 }
 
@@ -206,13 +427,33 @@ const ToolsRouteWithChildren = ToolsRoute._addFileChildren(ToolsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcademyRoute: AcademyRoute,
   AchievementsRoute: AchievementsRoute,
+  AdminRoute: AdminRoute,
+  AuthRoute: AuthRoute,
+  CalendarRoute: CalendarRoute,
+  ChallengesRoute: ChallengesRoute,
   DashboardRoute: DashboardRoute,
+  LandingRoute: LandingRoute,
   NotificationsRoute: NotificationsRoute,
   PointsRoute: PointsRoute,
+  ProfileRoute: ProfileRoute,
   RankingRoute: RankingRoute,
+  ReferralsRoute: ReferralsRoute,
+  SettingsRoute: SettingsRoute,
+  StoreRoute: StoreRoute,
   ToolsRoute: ToolsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
