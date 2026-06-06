@@ -1,8 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
-  Compass,
-  Library,
+  Sparkles,
   Wrench,
   Trophy,
   Award,
@@ -23,7 +22,7 @@ const menu: NavItem[] = [
   { label: "Herramientas", to: "/tools", Icon: Wrench },
   { label: "Ranking", to: "/ranking", Icon: Trophy },
   { label: "Logros", to: "/achievements", Icon: Award },
-  { label: "Academy Points", to: "/points", Icon: Compass },
+  { label: "Academy Points", to: "/points", Icon: Sparkles },
   { label: "Notificaciones", to: "/notifications", Icon: Bell },
   { label: "Ajustes", to: "/settings", Icon: Settings },
 ];
