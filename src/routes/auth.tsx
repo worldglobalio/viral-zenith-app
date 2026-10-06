@@ -35,49 +35,53 @@ function AuthPage() {
                   mode === m ? "bg-magenta text-primary-foreground" : "text-muted-foreground"
                 }`}
               >
-                {m === "login" ? "Iniciar sesión" : "Crear cuenta"}
+                {m === "login" ? "Login (demo)" : "Registro (demo)"}
               </button>
             ))}
           </div>
 
           <h1 className="text-3xl font-black mb-2">
-            {mode === "login" ? "Hola de nuevo" : "Empezá gratis"}
+            {mode === "login" ? "Explorá la demo" : "Probá la experiencia"}
           </h1>
           <p className="text-sm text-muted-foreground mb-8">
-            {mode === "login" ? "Volvé a tu suite de creador." : "Sin tarjeta. Sin compromiso."}
+            Esta es una demostración. No se validan credenciales, no se crean cuentas ni se inicia una sesión.
           </p>
 
           <div className="space-y-3">
-            <button className="w-full h-11 rounded-xl bg-surface-elevated text-sm font-semibold inline-flex items-center justify-center gap-2 hover:bg-accent">
-              <span className="size-4 rounded-full bg-white grid place-items-center text-[10px] text-black font-black">G</span> Continuar con Google
+            <button type="button" disabled aria-describedby="demo-social-note" className="w-full h-11 rounded-xl bg-surface-elevated text-sm font-semibold inline-flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-50">
+              <span className="size-4 rounded-full bg-white grid place-items-center text-[10px] text-black font-black">G</span> Google (no disponible)
             </button>
-            <button className="w-full h-11 rounded-xl bg-surface-elevated text-sm font-semibold inline-flex items-center justify-center gap-2 hover:bg-accent">
-              <span className="size-4 rounded-full bg-white text-black grid place-items-center text-[10px] font-black">t</span> Continuar con TikTok
+            <button type="button" disabled aria-describedby="demo-social-note" className="w-full h-11 rounded-xl bg-surface-elevated text-sm font-semibold inline-flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-50">
+              <span className="size-4 rounded-full bg-white text-black grid place-items-center text-[10px] font-black">t</span> TikTok (no disponible)
             </button>
           </div>
+
+          <p id="demo-social-note" className="text-xs text-muted-foreground mt-3">
+            El acceso con Google y TikTok no está disponible en esta demo.
+          </p>
 
           <div className="my-6 flex items-center gap-3 text-xs text-muted-foreground">
-            <div className="flex-1 h-px bg-border" /> O CON EMAIL <div className="flex-1 h-px bg-border" />
+            <div className="flex-1 h-px bg-border" /> VISTA PREVIA DEL FORMULARIO <div className="flex-1 h-px bg-border" />
           </div>
 
-          <form className="space-y-3">
+          <div className="space-y-3">
             <label className="block relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-              <input type="email" placeholder="tu@email.com" className="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-elevated text-sm outline-none focus:ring-2 focus:ring-magenta" />
+              <input type="email" disabled aria-label="Email (no disponible en la demo)" placeholder="Email deshabilitado en la demo" className="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-elevated text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50" />
             </label>
             <label className="block relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-              <input type="password" placeholder="••••••••" className="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-elevated text-sm outline-none focus:ring-2 focus:ring-magenta" />
+              <input type="password" disabled aria-label="Contraseña (no disponible en la demo)" placeholder="Contraseña deshabilitada" className="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-elevated text-sm outline-none disabled:cursor-not-allowed disabled:opacity-50" />
             </label>
             <Link to="/dashboard" className="w-full h-11 rounded-xl bg-magenta text-primary-foreground text-sm font-bold inline-flex items-center justify-center gap-2">
-              {mode === "login" ? "Entrar" : "Crear mi cuenta"} <ArrowRight className="size-4" />
+              Explorar demo <ArrowRight className="size-4" />
             </Link>
-          </form>
+          </div>
 
           <p className="text-xs text-muted-foreground text-center mt-6">
-            {mode === "login" ? "¿No tenés cuenta? " : "¿Ya tenés cuenta? "}
+            {mode === "login" ? "Vista previa de registro: " : "Vista previa de login: "}
             <button onClick={() => setMode(mode === "login" ? "register" : "login")} className="text-magenta font-semibold">
-              {mode === "login" ? "Registrate" : "Iniciá sesión"}
+              {mode === "login" ? "Ver registro" : "Ver login"}
             </button>
           </p>
         </div>
