@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { Copy, Gift, Users, Sparkles, Check } from "lucide-react";
-import { useState } from "react";
 
 export const Route = createFileRoute("/referrals")({
   component: ReferralsPage,
@@ -15,15 +14,14 @@ const referidos = [
 ];
 
 function ReferralsPage() {
-  const [copied, setCopied] = useState(false);
-  const link = "tiktolive.com/r/pathum";
   return (
-    <DashboardShell eyebrow="Programa" title="Referidos" rightPanel={false}>
+    <DashboardShell eyebrow="Programa · Demo" title="Referidos" rightPanel={false}>
+      <p className="text-sm text-muted-foreground mb-6">Demostración: las estadísticas, conversiones y recompensas mostradas son datos simulados. No hay invitaciones, puntos ni acceso Pro por referidos disponibles.</p>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         {[
           { label: "Referidos totales", value: "12", Icon: Users, accent: "text-cyan-accent" },
           { label: "Convertidos", value: "8", Icon: Check, accent: "text-online" },
-          { label: "AP ganados", value: "1.600", Icon: Sparkles, accent: "text-magenta" },
+          { label: "AP simulados", value: "1.600", Icon: Sparkles, accent: "text-magenta" },
         ].map((s) => (
           <div key={s.label} className="rounded-3xl bg-surface p-5">
             <s.Icon className={`size-5 ${s.accent}`} />
@@ -35,21 +33,22 @@ function ReferralsPage() {
 
       <div className="rounded-3xl p-6 md:p-8 bg-gradient-to-br from-magenta via-fuchsia-700 to-violet-700 mb-6">
         <Gift className="size-8 mb-3" />
-        <h2 className="text-2xl md:text-3xl font-black">Invitá creadores. Ganá 200 AP por cada conversión.</h2>
-        <p className="text-sm opacity-90 mt-2 max-w-xl">Compartí tu link único. Cuando se registren y completen su primer análisis, vos ganás Academy Points y ellos un mes Pro gratis.</p>
+        <h2 className="text-2xl md:text-3xl font-black">Vista de ejemplo del programa de referidos.</h2>
+        <p className="text-sm opacity-90 mt-2 max-w-xl">Este programa es ilustrativo. Las invitaciones y recompensas no están habilitadas en esta demo.</p>
         <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-xl">
-          <div className="flex-1 h-12 rounded-xl bg-black/30 px-4 grid items-center tabular text-sm">{link}</div>
+          <div className="flex-1 h-12 rounded-xl bg-black/30 px-4 grid items-center tabular text-sm">Enlace de invitación no disponible</div>
           <button
-            onClick={() => { navigator.clipboard?.writeText(link); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
-            className="h-12 px-5 rounded-xl bg-white text-black text-sm font-bold inline-flex items-center justify-center gap-2"
+            type="button"
+            disabled
+            className="h-12 px-5 rounded-xl bg-white text-black text-sm font-bold inline-flex items-center justify-center gap-2 opacity-60 cursor-not-allowed"
           >
-            {copied ? <><Check className="size-4" /> Copiado</> : <><Copy className="size-4" /> Copiar link</>}
+            <Copy className="size-4" /> Invitaciones no disponibles
           </button>
         </div>
       </div>
 
       <div className="rounded-3xl bg-surface p-6">
-        <h3 className="font-black mb-4">Tus referidos</h3>
+        <h3 className="font-black mb-4">Referidos simulados</h3>
         <div className="divide-y divide-border">
           {referidos.map((r) => (
             <div key={r.name} className="py-3 flex items-center gap-3">
