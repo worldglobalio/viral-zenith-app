@@ -29,12 +29,13 @@ function StorePage() {
   const cats = ["Todos", ...Array.from(new Set(items.map((i) => i.category)))];
   const list = filter === "Todos" ? items : items.filter((i) => i.category === filter);
   return (
-    <DashboardShell eyebrow="Tienda" title="Canjeá tus Academy Points" rightPanel={false}>
+    <DashboardShell eyebrow="Tienda" title="Catálogo de ejemplo" rightPanel={false}>
+      <p className="text-sm text-muted-foreground mb-6">Demostración: todos los artículos, servicios y costos son ejemplos. No hay canjes, compras ni suscripciones disponibles.</p>
       <div className="rounded-3xl bg-surface p-5 mb-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="size-12 rounded-2xl bg-magenta/20 grid place-items-center text-magenta"><Sparkles className="size-5" /></div>
           <div>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Tu saldo</p>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Saldo simulado</p>
             <p className="text-2xl font-black tabular">{mockUser.points.toLocaleString()} AP</p>
           </div>
         </div>
@@ -54,7 +55,6 @@ function StorePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {list.map((it) => {
           const a = accentMap[it.accent as keyof typeof accentMap];
-          const can = mockUser.points >= it.cost;
           return (
             <div key={it.name} className="rounded-3xl bg-surface p-5 relative overflow-hidden">
               <div className={`absolute -top-10 -right-10 size-32 rounded-full blur-3xl bg-gradient-to-br ${a} opacity-50`} />
@@ -62,18 +62,17 @@ function StorePage() {
                 <div className={`size-12 rounded-2xl bg-surface-elevated grid place-items-center ${a.split(" ").pop()}`}>
                   <it.Icon className="size-5" />
                 </div>
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-4">{it.category}</p>
+                <p className="text-[10px] uppercase tracking-widest text-muted-foreground mt-4">{it.category} · Ejemplo</p>
                 <h3 className="font-black text-lg mt-1">{it.name}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{it.desc}</p>
                 <div className="mt-5 flex items-center justify-between">
                   <span className="tabular font-black text-magenta">{it.cost} AP</span>
                   <button
-                    disabled={!can}
-                    className={`h-9 px-4 rounded-xl text-xs font-semibold inline-flex items-center gap-2 ${
-                      can ? "bg-magenta text-primary-foreground hover:opacity-90" : "bg-surface-elevated text-muted-foreground cursor-not-allowed"
-                    }`}
+                    type="button"
+                    disabled
+                    className="h-9 px-4 rounded-xl text-xs font-semibold inline-flex items-center gap-2 bg-surface-elevated text-muted-foreground cursor-not-allowed"
                   >
-                    <ShoppingBag className="size-3.5" /> {can ? "Canjear" : "Insuficiente"}
+                    <ShoppingBag className="size-3.5" /> No disponible
                   </button>
                 </div>
               </div>
