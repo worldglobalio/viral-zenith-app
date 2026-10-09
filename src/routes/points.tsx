@@ -34,14 +34,14 @@ function PointsPage() {
           <div className="relative">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles className="size-4 text-yellow-accent" />
-              <span className="text-xs uppercase tracking-widest text-white/80">Balance actual</span>
+              <span className="text-xs uppercase tracking-widest text-white/80">Balance simulado</span>
             </div>
             <p className="tabular text-7xl font-black tracking-tight text-white leading-none">
               {mockUser.points.toLocaleString("es-AR")}
             </p>
-            <p className="text-sm text-white/80 mt-2">Academy Points disponibles</p>
+            <p className="text-sm text-white/80 mt-2">Academy Points de ejemplo</p>
             <div className="mt-6 flex gap-3">
-              <a href="/redeem" className="h-11 px-5 rounded-full bg-white text-magenta text-sm font-bold hover:bg-white/90 transition inline-flex items-center">
+              <a href="/store" className="h-11 px-5 rounded-full bg-white text-magenta text-sm font-bold hover:bg-white/90 transition inline-flex items-center">
                 Canjear AP
               </a>
               <a href="/achievements" className="h-11 px-5 rounded-full border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition inline-flex items-center">
@@ -83,7 +83,7 @@ function PointsPage() {
 
       <div className="rounded-3xl bg-surface border border-border overflow-hidden">
         <div className="px-6 py-4 border-b border-border flex items-center justify-between">
-          <h3 className="font-bold">Historial de transacciones</h3>
+          <h3 className="font-bold">Historial simulado</h3>
           <span className="text-xs text-muted-foreground">Últimos 30 días</span>
         </div>
         <ul>
