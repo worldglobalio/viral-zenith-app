@@ -23,6 +23,7 @@ function Field({ label, value, type = "text" }: { label: string; value?: string;
       <input
         type={type}
         defaultValue={value}
+        readOnly
         className="mt-2 w-full h-11 rounded-xl bg-surface-elevated px-4 text-sm outline-none focus:ring-2 focus:ring-magenta"
       />
     </label>
@@ -38,6 +39,10 @@ function Toggle({ label, desc, defaultChecked = false }: { label: string; desc?:
         {desc && <p className="text-xs text-muted-foreground mt-0.5">{desc}</p>}
       </div>
       <button
+        type="button"
+        role="switch"
+        aria-checked={on}
+        aria-label={label}
         onClick={() => setOn(!on)}
         className={`relative w-11 h-6 rounded-full transition-colors ${on ? "bg-magenta" : "bg-surface-elevated"}`}
       >
@@ -51,6 +56,9 @@ function SettingsPage() {
   const [tab, setTab] = useState<(typeof tabs)[number]["key"]>("account");
   return (
     <DashboardShell eyebrow="Configuración" title="Ajustes" rightPanel={false}>
+      <p className="mb-6 text-sm text-muted-foreground">
+        Modo demostración: las configuraciones son ilustrativas. No se guardan cambios ni se modifican cuentas o servicios reales.
+      </p>
       <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-6">
         <nav className="rounded-3xl bg-surface p-3 h-fit">
           {tabs.map((t) => (
@@ -70,6 +78,7 @@ function SettingsPage() {
           {tab === "account" && (
             <div className="space-y-5">
               <h3 className="font-black text-lg">Información de cuenta</h3>
+              <p className="text-sm text-muted-foreground">Perfil de ejemplo de solo lectura.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Field label="Nombre completo" value="Pathum Tzoo" />
                 <Field label="Usuario" value="@pathum" />
@@ -77,13 +86,13 @@ function SettingsPage() {
                 <Field label="País" value="Argentina" />
               </div>
               <Field label="Bio" value="Creador de contenido enfocado en entretenimiento y educación digital." />
-              <button className="h-11 px-5 rounded-xl bg-magenta text-primary-foreground text-sm font-semibold">Guardar cambios</button>
             </div>
           )}
           {tab === "notifs" && (
             <div>
               <h3 className="font-black text-lg mb-3">Notificaciones</h3>
-              <Toggle label="Reporte semanal por email" desc="Cada lunes 9am" defaultChecked />
+              <p className="text-sm text-muted-foreground mb-3">Probá los interruptores como ejemplo visual. Su estado es temporal y se reinicia al salir de esta sección o recargar la página. No se envían emails ni se activan notificaciones.</p>
+              <Toggle label="Reporte semanal por email" desc="Horario ilustrativo: lunes a las 9" defaultChecked />
               <Toggle label="Logros desbloqueados" defaultChecked />
               <Toggle label="Nuevos retos" defaultChecked />
               <Toggle label="Push del navegador" />
@@ -93,26 +102,24 @@ function SettingsPage() {
           {tab === "security" && (
             <div className="space-y-5">
               <h3 className="font-black text-lg">Seguridad</h3>
-              <Field label="Contraseña actual" type="password" />
-              <Field label="Nueva contraseña" type="password" />
-              <Toggle label="Autenticación de dos factores" desc="Protegé tu cuenta con un código adicional" />
-              <button className="h-11 px-5 rounded-xl bg-magenta text-primary-foreground text-sm font-semibold">Actualizar</button>
+              <p className="text-sm text-muted-foreground">Esta demo no permite cambiar contraseñas ni activar la autenticación de dos factores. No ingreses credenciales reales.</p>
             </div>
           )}
           {tab === "billing" && (
             <div className="space-y-5">
-              <h3 className="font-black text-lg">Plan actual</h3>
+              <h3 className="font-black text-lg">Ejemplo de plan</h3>
               <div className="rounded-2xl bg-gradient-to-br from-magenta to-fuchsia-700 p-6">
-                <p className="text-xs uppercase tracking-widest opacity-80">Plan</p>
+                <p className="text-xs uppercase tracking-widest opacity-80">Plan ilustrativo · sin suscripción activa</p>
                 <p className="text-3xl font-black mt-1">Academy</p>
-                <p className="text-sm opacity-90 mt-2">Renueva el 15 de Julio · USD 19/mes</p>
+                <p className="text-sm opacity-90 mt-2">Academy se muestra como ejemplo. La demo no procesa pagos ni renovaciones.</p>
               </div>
-              <button className="h-11 px-5 rounded-xl bg-surface-elevated text-sm font-semibold">Cambiar plan</button>
+              <p className="text-sm text-muted-foreground">La contratación y el cambio de plan no están disponibles en esta demostración.</p>
             </div>
           )}
           {tab === "lang" && (
             <div className="space-y-5">
               <h3 className="font-black text-lg">Idioma y región</h3>
+              <p className="text-sm text-muted-foreground">Valores de ejemplo de solo lectura; no cambian el idioma ni la región de la aplicación.</p>
               <Field label="Idioma" value="Español (Latam)" />
               <Field label="Zona horaria" value="GMT-3 Buenos Aires" />
               <Field label="Moneda" value="USD" />
@@ -121,9 +128,10 @@ function SettingsPage() {
           {tab === "appearance" && (
             <div>
               <h3 className="font-black text-lg mb-4">Apariencia</h3>
+              <p className="text-sm text-muted-foreground mb-4">Temas ilustrativos. El cambio de tema no está disponible en esta demo.</p>
               <div className="grid grid-cols-2 gap-3">
                 {["Dark", "Midnight", "Crimson", "Cyber"].map((t) => (
-                  <button key={t} className="h-24 rounded-2xl bg-surface-elevated grid place-items-center text-sm font-semibold hover:ring-2 hover:ring-magenta transition">
+                  <button key={t} type="button" disabled className="h-24 rounded-2xl bg-surface-elevated grid place-items-center text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60">
                     {t}
                   </button>
                 ))}
